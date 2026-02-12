@@ -1,0 +1,744 @@
+<html lang="ja" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">German Wine Specialists | Terroir &amp; Precision</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" vid="5">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="6">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;500;700&amp;family=Shippori+Mincho:wght@400;600;800&amp;family=Space+Grotesk:wght@300;500;700&amp;family=Zen+Old+Mincho:wght@400;700;900&amp;display=swap" rel="stylesheet" vid="7">
+    
+    <style vid="8">
+        :root {
+            
+            --bg-cream: #F4F1EA; 
+            --ink-black: #1E1E1E; 
+            --wood-accent: #8C7B6C; 
+            --highlight: #B0A090; 
+            --white: #FFFFFF;
+            
+            
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1.5rem;
+            --spacing-md: 3rem;
+            --spacing-lg: 6rem;
+            --spacing-xl: 10rem;
+            
+            
+            --font-serif-en: 'Zen Old Mincho', serif; 
+            --font-serif-jp: 'Shippori Mincho', serif;
+            --font-sans: 'Space Grotesk', sans-serif; 
+            --font-body: 'Noto Serif JP', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--ink-black);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm);
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 0.15em;
+        }
+
+        .mono {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 1px solid var(--ink-black);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--ink-black);
+            color: var(--bg-cream);
+        }
+
+        .btn-primary {
+            background: var(--ink-black);
+            color: var(--bg-cream);
+        }
+        
+        .btn-primary:hover {
+            background: var(--wood-accent);
+            border-color: var(--wood-accent);
+        }
+
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .hero-top {
+            flex: 1.2; 
+            background-color: var(--bg-cream);
+            padding: var(--spacing-md);
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .hero-bottom {
+            flex: 1; 
+            background-color: #2a2a2a;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: var(--spacing-md);
+        }
+
+        
+        .hero-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            background: 
+                url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiPgo8cmVjdCB3aWR0aD0iNCIgaGVpZ2h0PSI0IiBmaWxsPSIjMmEyYTJhIi8+CjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiMzMzMiLz4KPC9zdmc+'),
+                linear-gradient(to bottom, rgba(40,35,30,0.8), rgba(20,20,20,1));
+            opacity: 0.9;
+            z-index: 1;
+        }
+        
+        .hero-image-overlay {
+            
+            position: absolute;
+            right: 15%;
+            top: -20%; 
+            width: 1px;
+            height: 150%;
+            background: var(--ink-black);
+            z-index: 2;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-title-group {
+            display: flex;
+            flex-direction: row-reverse; 
+            gap: var(--spacing-md);
+            align-items: flex-start;
+        }
+
+        .hero-jp-sub {
+            font-family: var(--font-serif-jp);
+            font-size: 1rem;
+            line-height: 2;
+            height: 300px;
+            border-left: 1px solid rgba(0,0,0,0.1);
+            padding-left: var(--spacing-sm);
+        }
+
+        .hero-headline {
+            font-family: var(--font-serif-en);
+            font-size: 3.5rem;
+            line-height: 1.1;
+            font-weight: 400;
+            max-width: 400px;
+            
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .hero-meta {
+            position: absolute;
+            bottom: var(--spacing-md);
+            left: var(--spacing-md);
+            z-index: 2;
+            color: var(--white);
+        }
+
+        .tag-pill {
+            display: inline-block;
+            border: 1px solid currentColor;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.7rem;
+            border-radius: 50px; 
+            margin-bottom: 1rem;
+            font-family: var(--font-sans);
+        }
+
+        .hero-big-label {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 4rem;
+            line-height: 0.9;
+            text-transform: uppercase;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        
+        .trust-section {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .trust-content h2 {
+            font-family: var(--font-serif-en);
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .trust-jp {
+            font-family: var(--font-serif-jp);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-md);
+            color: #444;
+        }
+
+        
+        .vdp-graphic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .pyramid-level {
+            width: 100%;
+            border: 1px solid var(--wood-accent);
+            padding: 1rem;
+            text-align: center;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--wood-accent);
+            position: relative;
+        }
+
+        .pyramid-level:nth-child(1) { width: 30%; border-bottom: 4px solid var(--ink-black); color: var(--ink-black); font-weight: bold; }
+        .pyramid-level:nth-child(2) { width: 50%; }
+        .pyramid-level:nth-child(3) { width: 70%; }
+        .pyramid-level:nth-child(4) { width: 90%; }
+
+        
+        .service-section {
+            padding: var(--spacing-lg) 0;
+            background-color: #F0EDE6; 
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px; 
+            background-color: rgba(0,0,0,0.1); 
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .service-card {
+            background-color: var(--bg-cream);
+            padding: var(--spacing-md) var(--spacing-sm);
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: #fff;
+        }
+
+        .service-num {
+            font-family: var(--font-sans);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--wood-accent);
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-family: var(--font-serif-en);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-desc {
+            font-family: var(--font-serif-jp);
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        
+        .portfolio-section {
+            padding: var(--spacing-lg) 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-sm);
+            border-bottom: 2px solid var(--ink-black);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+        }
+
+        .data-table th {
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.75rem;
+            color: #888;
+            padding-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .data-table td {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+        }
+
+        .data-table tr:hover td {
+            color: var(--wood-accent);
+            cursor: default;
+        }
+
+        .cell-winery { font-weight: 700; font-size: 1.1rem; font-family: var(--font-serif-en); }
+
+        
+        .voice-section {
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .quote-box {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .quote-mark {
+            font-size: 4rem;
+            font-family: var(--font-serif-en);
+            color: var(--wood-accent);
+            line-height: 0.5;
+        }
+
+        .quote-text {
+            font-family: var(--font-serif-jp);
+            font-size: 1.5rem;
+            margin: var(--spacing-md) 0;
+            line-height: 2;
+        }
+
+        .attribution {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #666;
+        }
+
+        
+        .contact-section {
+            padding: var(--spacing-lg) 0;
+            background-color: var(--ink-black);
+            color: var(--bg-cream);
+        }
+
+        .tab-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #444;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: transparent;
+            border: none;
+            color: #666;
+            font-family: var(--font-serif-jp);
+            font-size: 1.1rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: var(--bg-cream);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--bg-cream);
+        }
+
+        .form-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .form-input {
+            background: transparent;
+            border: 1px solid #444;
+            padding: 1rem;
+            color: var(--bg-cream);
+            font-family: var(--font-serif-jp);
+            font-size: 1rem;
+            border-radius: 0;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--wood-accent);
+        }
+
+        textarea.form-input {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .microcopy {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #666;
+            font-family: var(--font-serif-jp);
+        }
+
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+
+        
+        .jp-vertical-title {
+            writing-mode: vertical-rl;
+            font-family: var(--font-serif-jp);
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            color: var(--ink-black);
+            height: 200px;
+            margin-right: 2rem;
+        }
+
+    </style>
+</head>
+<body vid="9">
+
+    
+    <section class="hero" vid="10">
+        <div class="hero-top" vid="11">
+            <div class="hero-title-group animate" vid="12">
+                <div class="hero-headline" vid="13">
+                    <span style="font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--wood-accent); display:block; margin-bottom: 1rem;" vid="14">German Wine Specialists</span>
+                    Pure Terroir.<br vid="15">
+                    Technical<br vid="16">
+                    Precision.
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem;" vid="17">
+                        <button class="btn btn-primary" vid="18">導入相談</button>
+                        <button class="btn" vid="19">資料請求（PDF）</button>
+                    </div>
+                </div>
+                
+                
+                <div class="hero-jp-sub vertical-text" vid="20">
+                    ドイツ辛口ワイン専門インポーター。<br vid="21">
+                    飲食・ホテル・酒販向けに、<br vid="22">
+                    厳選ラインナップと供給設計、<br vid="23">
+                    導入サポートを提供します。
+                </div>
+            </div>
+
+            
+            <div class="mono" style="position: absolute; top: var(--spacing-md); right: var(--spacing-md); text-align: right;" vid="24">
+                B2B PROCUREMENT<br vid="25">
+                EST. 2023
+            </div>
+        </div>
+
+        <div class="hero-bottom" vid="26">
+            <div class="hero-texture" vid="27"></div>
+            <div class="hero-image-overlay" vid="28"></div> 
+            
+            <div class="hero-meta animate delay-1" vid="29">
+                <span class="tag-pill" vid="30">DRY RIESLING FOCUS</span>
+                <div class="hero-big-label" vid="31">
+                    FOUND<br vid="32">TERROIR
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="trust-section" vid="33">
+        <div class="container" vid="34">
+            <div class="split-grid" vid="35">
+                <div class="trust-content" vid="36">
+                    <span class="mono" style="color: var(--wood-accent);" vid="37">Standards</span>
+                    <h2 vid="38">The Top 0.2%</h2>
+                    <p class="trust-jp" vid="39">
+                        業務用導入（飲食・ホテル・酒販）に対応。<br vid="40">
+                        提案・テック情報を整備しています。
+                    </p>
+                    <p style="font-size: 0.9rem; margin-top: 1rem; max-width: 400px;" vid="41">
+                        Strict VDP (Verband Deutscher Prädikatsweingüter) alignment. Only the finest classifications enter our portfolio.
+                    </p>
+                </div>
+                
+                
+                <div class="vdp-graphic" vid="42">
+                    <div class="pyramid-level" vid="43">GROSSE LAGE (Grand Cru)</div>
+                    <div class="pyramid-level" vid="44">ERSTE LAGE (Premier Cru)</div>
+                    <div class="pyramid-level" vid="45">ORTSWEIN (Village)</div>
+                    <div class="pyramid-level" vid="46">GUTSWEIN (Estate)</div>
+                    <div class="mono" style="margin-top: 1rem; color: #888;" vid="47">QUALITY PYRAMID STRUCTURE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="service-section" vid="48">
+        <div class="container" vid="49">
+            <div class="service-grid" vid="50">
+                
+                <div class="service-card" vid="51">
+                    <div vid="52">
+                        <div class="service-num" vid="53">001</div>
+                        <span class="service-title" vid="54">Selection</span>
+                        <p class="service-desc" vid="55">導入条件に合わせて選定</p>
+                    </div>
+                    <div style="width: 20px; height: 1px; background: var(--wood-accent);" vid="56"></div>
+                </div>
+
+                
+                <div class="service-card" vid="57">
+                    <div vid="58">
+                        <div class="service-num" vid="59">002</div>
+                        <span class="service-title" vid="60">Supply</span>
+                        <p class="service-desc" vid="61">品質と在庫を前提に供給設計</p>
+                    </div>
+                    <div style="width: 20px; height: 1px; background: var(--wood-accent);" vid="62"></div>
+                </div>
+
+                
+                <div class="service-card" vid="63">
+                    <div vid="64">
+                        <div class="service-num" vid="65">003</div>
+                        <span class="service-title" vid="66">Onboarding</span>
+                        <p class="service-desc" vid="67">スタッフが説明でき現場で回る</p>
+                    </div>
+                    <div style="width: 20px; height: 1px; background: var(--wood-accent);" vid="68"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="portfolio-section" vid="69">
+        <div class="container" vid="70">
+            <div class="section-header" vid="71">
+                <h2 style="font-family: var(--font-serif-en);" vid="72">Curated Portfolio</h2>
+                <a href="#" class="btn" vid="73">DOWNLOAD FULL LIST (PDF)</a>
+            </div>
+
+            <table class="data-table" vid="74">
+                <thead vid="75">
+                    <tr vid="76">
+                        <th vid="77">Winery</th>
+                        <th vid="78">Region</th>
+                        <th vid="79">Focus</th>
+                        <th vid="80">Classification</th>
+                    </tr>
+                </thead>
+                <tbody vid="81">
+                    <tr vid="82">
+                        <td class="cell-winery" vid="83">Keller</td>
+                        <td vid="84">Rheinhessen</td>
+                        <td vid="85">Limestone Riesling</td>
+                        <td vid="86">Grosse Lage</td>
+                    </tr>
+                    <tr vid="87">
+                        <td class="cell-winery" vid="88">Dönnhoff</td>
+                        <td vid="89">Nahe</td>
+                        <td vid="90">Volcanic Soils</td>
+                        <td vid="91">Erste Lage / GG</td>
+                    </tr>
+                    <tr vid="92">
+                        <td class="cell-winery" vid="93">Egon Müller</td>
+                        <td vid="94">Mosel</td>
+                        <td vid="95">Slate Terroir</td>
+                        <td vid="96">Prädikat</td>
+                    </tr>
+                    <tr vid="97">
+                        <td class="cell-winery" vid="98">Wittmann</td>
+                        <td vid="99">Rheinhessen</td>
+                        <td vid="100">Biodynamic</td>
+                        <td vid="101">Grosse Lage</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    
+    <section class="voice-section" vid="102">
+        <div class="container" vid="103">
+            <div class="quote-box" vid="104">
+                <div class="quote-mark" vid="105">“</div>
+                <p class="quote-text" vid="106">
+                    導入がスムーズで、スタッフが自信を持って説明できる。<br vid="107">
+                    何より、繊細な和の料理に驚くほど刺さるワインです。
+                </p>
+                <div class="attribution" vid="108">
+                    Head Sommelier — K. Tanaka, Ginza
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section class="contact-section" id="contact" vid="109">
+        <div class="container" vid="110">
+            <div class="tab-container" vid="111">
+                <h2 style="margin-bottom: 2rem; font-family: var(--font-serif-en);" vid="112">Contact Us</h2>
+                
+                <div class="tabs" vid="113">
+                    <button class="tab-btn active" onclick="switchTab('consult')" vid="114">導入相談</button>
+                    <button class="tab-btn" onclick="switchTab('pdf')" vid="115">資料請求（PDF）</button>
+                </div>
+
+                
+                <form id="contactForm" vid="116">
+                    <div class="form-grid" vid="117">
+                        <div class="split-grid" style="gap: 1.5rem;" vid="118">
+                            <div class="form-group" vid="119">
+                                <label class="form-label" vid="120">Company Name</label>
+                                <input type="text" class="form-input" placeholder="御社名" vid="121">
+                            </div>
+                            <div class="form-group" vid="122">
+                                <label class="form-label" vid="123">Contact Person</label>
+                                <input type="text" class="form-input" placeholder="ご担当者名" vid="124">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group" vid="125">
+                            <label class="form-label" vid="126">Email Address</label>
+                            <input type="email" class="form-input" placeholder="email@company.com" vid="127">
+                        </div>
+
+                        <div class="form-group" vid="128">
+                            <label class="form-label" id="msg-label" vid="129">Message</label>
+                            <textarea class="form-input" id="msg-input" placeholder="例：料理／価格帯／想定本数／納品エリア／希望スタイル" vid="130"></textarea>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 1rem;" vid="131">
+                            <div class="microcopy" vid="132">
+                                未確定でもOK。<br vid="133">原則1営業日以内にご返信します。
+                            </div>
+                            <button type="submit" class="btn" style="background: var(--bg-cream); color: var(--ink-black); border:none;" vid="134">SEND INQUIRY</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script vid="135">
+        
+        function switchTab(type) {
+            const btns = document.querySelectorAll('.tab-btn');
+            const msgInput = document.getElementById('msg-input');
+            
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            if(type === 'consult') {
+                btns[0].classList.add('active');
+                msgInput.placeholder = "例：料理／価格帯／想定本数／納品エリア／希望スタイル";
+            } else {
+                btns[1].classList.add('active');
+                msgInput.placeholder = "用途／希望資料（商品リスト・テック等）";
+            }
+        }
+    </script>
+
+</body></html>
