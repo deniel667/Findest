@@ -1,0 +1,1181 @@
+<html lang="ja" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
+    <title vid="4">FINDEST | German Wine Specialists</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17" vid="5"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" vid="6">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="7">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&amp;family=Noto+Serif+JP:wght@300;400;500;600&amp;display=swap" rel="stylesheet" vid="8">
+    <script vid="9">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#F2F0EB',
+                        surface: '#EBE8E3',
+                        text: '#0F0F0F',
+                        'text-secondary': '#4A4A4A',
+                        line: '#B8B5AF',
+                        accent: '#8C7B6C',
+                        footer: '#0F0F0F',
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                        '22': '5.5rem',
+                    },
+                    gridTemplateColumns: {
+                        '12': 'repeat(12, minmax(0, 1fr))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style vid="10">
+        
+        .writing-vertical {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hairline {
+            border-width: 1px;
+        }
+        @media (min-resolution: 2dppx) {
+            .hairline {
+                border-width: 0.5px;
+            }
+        }
+        .glass-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hero gradient background */
+        .hero-gradient {
+            background: linear-gradient(180deg, #F2F0EB 0%, #FAFAF8 50%, #F2F0EB 100%);
+        }
+        
+        /* Premium fade-in */
+        .fade-in {
+            animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+            transform: translateY(12px);
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        
+        /* Chapter navigation */
+        .chapter-nav-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .chapter-nav-item.active {
+            color: #8C7B6C;
+            border-left-color: #8C7B6C;
+            padding-left: 1.25rem;
+        }
+        
+        /* Scroll reveal */
+        .chapter-block {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .chapter-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Premium button hover */
+        .premium-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* Arrow motion */
+        .arrow-motion {
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .premium-btn:hover .arrow-motion {
+            transform: translateX(4px);
+        }
+        
+        /* Service card hover */
+        .service-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: #8C7B6C;
+        }
+        
+        /* Fade-in blocks for new sections */
+        .fade-in-block {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-in-block.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* VDP pyramid hover */
+        .vdp-tier {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .vdp-tier:hover {
+            background: #EBE8E3;
+            border-color: #8C7B6C;
+        }
+        
+        /* Scroll cue animation */
+        @keyframes scrollCue {
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(8px); opacity: 0.6; }
+        }
+        .scroll-cue {
+            animation: scrollCue 2s ease-in-out infinite;
+        }
+        
+        /* Winery list-card hover */
+        .winery-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .winery-card:hover {
+            transform: translateY(-1px);
+            border-color: #8C7B6C;
+        }
+        .winery-card.selected {
+            border-color: #8C7B6C;
+            background: #FAFAF8;
+        }
+        
+        /* Winery drawer slide-in */
+        .drawer {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .drawer.open {
+            transform: translateX(0);
+        }
+        
+        /* Wine card expand */
+        .wine-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .wine-card:hover {
+            border-color: #8C7B6C;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            .chapter-block {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+            .scroll-cue {
+                animation: none !important;
+            }
+        }
+        
+        /* Section rhythm */
+        .section-padding {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-bg text-text font-sans antialiased selection:bg-accent selection:text-white w-full overflow-x-hidden" vid="11">
+
+    
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-multiply bg-bg/80 glass-blur border-b border-line/30" vid="12">
+        <div class="flex items-center gap-4" vid="13">
+            <h1 class="font-serif text-xl tracking-widest font-bold" vid="14">FINDEST</h1>
+            <span class="text-xs text-text-secondary uppercase tracking-widest hidden sm:block border-l border-line pl-4" vid="15">German Wine Specialists</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-xs tracking-widest uppercase text-text-secondary" vid="16">
+            <a href="#trust" class="hover:text-text transition-colors" vid="17">Trust</a>
+            <a href="#philosophy" class="hover:text-text transition-colors" vid="18">Philosophy</a>
+            <a href="#ch-relationships" class="hover:text-text transition-colors" vid="19">Partners</a>
+            <a href="#service" class="hover:text-text transition-colors" vid="20">Service</a>
+            <a href="#catalogue" class="hover:text-text transition-colors" vid="21">Catalogue</a>
+            <a href="#contact" class="hover:text-text transition-colors" vid="22">Contact</a>
+        </div>
+        <button class="md:hidden p-2" vid="23">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" vid="25"></path></svg>
+        </button>
+    </nav>
+
+    
+    <header class="hero-gradient relative min-h-screen pt-24 pb-16 px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-6 items-center" vid="26">
+        
+        <div class="absolute right-8 top-32 hidden lg:block text-xs text-text-secondary tracking-[0.3em] writing-vertical h-96 border-l border-line pl-4 opacity-40" vid="27">
+            ドイツ辛口ワイン専門インポーター
+        </div>
+        
+        <!-- Scroll cue -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 scroll-cue" vid="28">
+            <span class="text-[10px] tracking-[0.3em] text-text-secondary uppercase" vid="29">Scroll</span>
+            <div class="w-px h-12 bg-line" vid="30"></div>
+        </div>
+
+        <div class="col-span-1 md:col-span-10 md:col-start-2 flex flex-col justify-center h-full" vid="31">
+            <div class="mb-8 fade-in" vid="32">
+                <span class="text-accent text-sm tracking-widest mb-4 block" vid="33">表現者から表現者へ</span>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl leading-tight mb-6" vid="34">
+                    Pure Terroir.<br vid="35">
+                    <span class="italic font-light" vid="36">Technical</span> Precision.
+                </h1>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8 fade-in delay-100" vid="37">
+                <div vid="38">
+                    <h2 class="font-serif text-xl leading-relaxed mb-6 text-text" vid="39">
+                        「どのワインを置くか」ではなく、<br vid="40">
+                        「何を表現するか、どう表現するか」まで。<br vid="41">
+                        ワインで、場の品格を整える。
+                    </h2>
+                </div>
+                <div class="flex flex-col justify-between" vid="42">
+                    <p class="text-text-secondary text-sm leading-7 mb-8" vid="43">
+                        飲食・ホテル・酒販向けに、厳選ラインナップと安定供給、<br class="hidden md:block" vid="44">
+                        導入支援（提案・テック）を提供します。
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4" vid="45">
+                        <a href="#contact" class="premium-btn inline-flex items-center justify-center px-10 py-4 bg-text text-bg text-xs tracking-[0.2em] uppercase" vid="46">
+                            導入相談
+                            <span class="arrow-motion ml-2" vid="47">→</span>
+                        </a>
+                        <a href="#contact" class="premium-btn inline-flex items-center justify-center px-10 py-4 border border-text text-text text-xs tracking-[0.2em] uppercase" vid="48">
+                            資料請求 (PDF)
+                            <span class="arrow-motion ml-2" vid="49">→</span>
+                        </a>
+                    </div>
+                    <p class="mt-4 text-[10px] text-text-secondary" vid="50">※ 原則1営業日以内に返信いたします</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Philosophy Section with Chapter Layout -->
+    <section id="philosophy" class="section-padding px-6 md:px-12 border-t border-line bg-bg" vid="51">
+        <div class="max-w-7xl mx-auto" vid="52">
+            <div class="text-center mb-16" vid="53">
+                <span class="text-xs tracking-widest text-accent uppercase block mb-3" vid="54">Philosophy</span>
+                <h2 class="font-serif text-4xl" vid="55">理念</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12" vid="56">
+                <!-- Sticky Chapter Navigation (Left) -->
+                <nav class="lg:col-span-3 lg:sticky self-start" style="top: 8rem;" vid="57">
+                    <div class="hidden lg:block space-y-0" vid="58">
+                        <a href="#ch-rinen" class="chapter-nav-item block py-3 pl-4 border-l-2 border-line text-sm text-text-secondary hover:text-text transition-colors" vid="59">① 理念</a>
+                        <div class="h-px bg-line my-1" vid="60"></div>
+                        <a href="#ch-mokuteki" class="chapter-nav-item block py-3 pl-4 border-l-2 border-line text-sm text-text-secondary hover:text-text transition-colors" vid="61">② 目的</a>
+                        <div class="h-px bg-line my-1" vid="62"></div>
+                        <a href="#ch-kyomei" class="chapter-nav-item block py-3 pl-4 border-l-2 border-line text-sm text-text-secondary hover:text-text transition-colors" vid="63">③ 共鳴</a>
+                        <div class="h-px bg-line my-1" vid="64"></div>
+                        <a href="#ch-kozo" class="chapter-nav-item block py-3 pl-4 border-l-2 border-line text-sm text-text-secondary hover:text-text transition-colors" vid="65">④ 構造</a>
+                        <div class="h-px bg-line my-1" vid="66"></div>
+                        <a href="#ch-noren" class="chapter-nav-item block py-3 pl-4 border-l-2 border-line text-sm text-text-secondary hover:text-text transition-colors leading-snug" style="font-size: 0.8125rem;" vid="67">⑤ 暖簾という発想～深度が深まった関係性～</a>
+                        <div class="h-px bg-line my-1" vid="68"></div>
+                        <a href="#ch-relationships" class="chapter-nav-item block py-3 pl-4 border-l-2 border-line text-sm text-text-secondary hover:text-text transition-colors" vid="69">FINDESTの四つの関係性</a>
+                    </div>
+                    
+                    <!-- Mobile: Horizontal Scroll -->
+                    <div class="lg:hidden flex gap-2 overflow-x-auto pb-4 hide-scrollbar" vid="70">
+                        <a href="#ch-rinen" class="flex-shrink-0 px-4 py-2 border border-line bg-transparent text-xs whitespace-nowrap hover:bg-surface transition-colors" vid="71">① 理念</a>
+                        <a href="#ch-mokuteki" class="flex-shrink-0 px-4 py-2 border border-line bg-transparent text-xs whitespace-nowrap hover:bg-surface transition-colors" vid="72">② 目的</a>
+                        <a href="#ch-kyomei" class="flex-shrink-0 px-4 py-2 border border-line bg-transparent text-xs whitespace-nowrap hover:bg-surface transition-colors" vid="73">③ 共鳴</a>
+                        <a href="#ch-kozo" class="flex-shrink-0 px-4 py-2 border border-line bg-transparent text-xs whitespace-nowrap hover:bg-surface transition-colors" vid="74">④ 構造</a>
+                        <a href="#ch-noren" class="flex-shrink-0 px-4 py-2 border border-line bg-transparent text-xs whitespace-nowrap hover:bg-surface transition-colors" vid="75">⑤ 暖簾</a>
+                        <a href="#ch-relationships" class="flex-shrink-0 px-4 py-2 border border-line bg-transparent text-xs whitespace-nowrap hover:bg-surface transition-colors" vid="76">関係性</a>
+                    </div>
+                </nav>
+
+                <!-- Main Content (Right) -->
+                <div class="lg:col-span-9" vid="77">
+                    <div class="max-w-3xl space-y-24" style="max-width: 70ch;" vid="78">
+                        
+                        <!-- Chapter 1: 理念 -->
+                        <div id="ch-rinen" class="chapter-block chapter-target" style="scroll-margin-top: 120px;" vid="79">
+                            <h3 class="font-serif text-2xl mb-8" vid="80">① 理念</h3>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="81">
+                                <p vid="82">FINDESTと関わるすべての場には、<br vid="83">共通する理念があります。</p>
+                                <p vid="84">それは、</p>
+                                <p vid="85">品位と丁寧さを守ること。<br vid="86">そして、自分軸を尊重すること。</p>
+                                <p vid="87">その理念を、<br vid="88">私たちは二つの言葉で表しています。</p>
+                                
+                                <div class="my-12 py-12 px-8 text-center border border-line/60 bg-surface/40" vid="89">
+                                    <p class="font-serif mb-3" style="font-size: 1.25rem; letter-spacing: 0.02em;" vid="90">Sustainable Integrity</p>
+                                    <p class="text-sm text-text-secondary mb-8" vid="91">（品位と丁寧さを守る）</p>
+                                    <p class="text-accent mb-8" style="font-size: 1.5rem;" vid="92">×</p>
+                                    <p class="font-serif mb-3" style="font-size: 1.25rem; letter-spacing: 0.02em;" vid="93">Honoring Identity</p>
+                                    <p class="text-sm text-text-secondary" vid="94">（自分軸を尊重）</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-line my-12" vid="95"></div>
+
+                        <!-- Chapter 2: 目的 -->
+                        <div id="ch-mokuteki" class="chapter-block chapter-target" style="scroll-margin-top: 120px;" vid="96">
+                            <h3 class="font-serif text-2xl mb-8" vid="97">② 目的</h3>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="98">
+                                <p vid="99">FINDESTは、関わる場や人々において</p>
+                                <ul class="list-disc list-inside space-y-2 text-text-secondary" vid="100">
+                                    <li vid="101">近視眼的な消費や他人軸の評価に影響されていることに気付く</li>
+                                    <li vid="102">本質と向き合う姿勢を取り戻す</li>
+                                    <li vid="103">自分の感覚で受け取る</li>
+                                </ul>
+                                <p vid="104">このようなステイタスを作り出し</p>
+                                <p vid="105">ワインを通した文化的姿勢の再設計を目指しています。</p>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-line my-12" vid="106"></div>
+
+                        <!-- Chapter 3: 共鳴 -->
+                        <div id="ch-kyomei" class="chapter-block chapter-target" style="scroll-margin-top: 120px;" vid="107">
+                            <h3 class="font-serif text-2xl mb-8" vid="108">③ 共鳴</h3>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="109">
+                                <p vid="110">FINDESTは、共鳴します。</p>
+                                <p vid="111">志を持つ人、<br vid="112">自分軸を大切にする姿勢。</p>
+                                <p vid="113">そこに共鳴したとき、<br vid="114">私たちはワインを重ねます。</p>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-line my-12" vid="115"></div>
+
+                        <!-- Chapter 4: 構造 -->
+                        <div id="ch-kozo" class="chapter-block chapter-target" style="scroll-margin-top: 120px;" vid="116">
+                            <h3 class="font-serif text-2xl mb-8" vid="117">④ 構造</h3>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="118">
+                                <p vid="119">品位と丁寧さを守り<br vid="120">自分軸を尊重するために<br vid="121">私たちは構造ある適応を選びます。</p>
+                                
+                                <div class="my-10 py-10 px-8 text-center border border-line/60 bg-surface/40" vid="122">
+                                    <p class="font-serif" style="font-size: 1.25rem; letter-spacing: 0.02em;" vid="123">→ Structured Adaptation</p>
+                                </div>
+
+                                <p vid="124">それは、無秩序な拡大ではなく、<br vid="125">関係性に応じて深度を整えていくものです。</p>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-line my-12" vid="126"></div>
+
+                        <!-- Chapter 5: 暖簾 -->
+                        <div id="ch-noren" class="chapter-block chapter-target" style="scroll-margin-top: 120px;" vid="127">
+                            <h3 class="font-serif text-2xl mb-8" vid="128">⑤ 暖簾という発想～深度が深まった関係性～</h3>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="129">
+                                <p vid="130">日本文化の【暖簾 ～Noren～】に着想を得て、<br vid="131">私たちは近視眼的ではなく、<br vid="132">品位と軸を保ちながら展開するスタイルを取り入れました。</p>
+                                <p vid="133">暖簾分けとは本来、<br vid="134">本家の信用（屋号）を預けられる相手にだけ、<br vid="135">営業の権利と責任を分ける日本の商慣行です。</p>
+                                <p vid="136">FINDESTがここから学ぶのは、<br vid="137">"数を増やす"ことだけではなく、<br vid="138">浅い理解で価値を崩さないための「型（約束事）」を共有することです。</p>
+                                <p vid="139">この暖簾システムは、後述の【公認パートナー】に適用されます。</p>
+                            </div>
+                        </div>
+
+                        <div class="h-px bg-line my-16" vid="140"></div>
+
+                        <!-- Chapter 6: 四つの関係性 (unified block) -->
+                        <div id="ch-relationships" class="chapter-block chapter-target" style="scroll-margin-top: 120px;" vid="141">
+                            <h3 class="font-serif text-2xl mb-8" vid="142">FINDESTの四つの関係性</h3>
+                            <div class="space-y-6 text-base text-text mb-12" style="line-height: 1.8;" vid="143">
+                                <p vid="144">FINDESTは、<br vid="145">単に「販路」として関係を築いていません。</p>
+                                <p vid="146">関係性そのものに、思想があります。</p>
+                                <p vid="147">私たちは、<br vid="148">共鳴の深度と構造の共有度によって、<br vid="149">関係を丁寧に分けています。</p>
+                                <p vid="150">それは、<br vid="151">秩序ある展開のためです。</p>
+                            </div>
+
+                            <div class="h-px bg-line my-10" vid="152"></div>
+
+                            <!-- Subchapter: 取扱店 -->
+                            <div class="mb-10" vid="153">
+                                <h4 class="font-serif text-xl mb-6" vid="154">① 取扱店</h4>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="155">
+                                <p vid="156">FINDESTワインを扱ってくださる場。</p>
+                                <p vid="157">すでに確かな美意識と型を持ち、<br vid="158">その流儀の中にFINDESTワインを重ねてくださる店。</p>
+                                <p vid="159">私たちは、その型を壊さず、<br vid="160">寄り添う姿勢を大切にします。</p>
+                            </div>
+                        </div>
+
+                            <div class="h-px bg-line my-8" vid="161"></div>
+
+                            <!-- Subchapter: 共鳴店 -->
+                            <div class="mb-10" vid="162">
+                                <h4 class="font-serif text-xl mb-6" vid="163">② 共鳴店</h4>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="164">
+                                <p vid="165">FINDESTが共鳴している店。</p>
+                                <p vid="166">志を持ち、<br vid="167">自分軸を大切にし、<br vid="168">場を丁寧に育てようとしている店。</p>
+                                <p vid="169">まだ構造の共有は行わなくても、<br vid="170">思想の部分で響き合っている存在です。</p>
+                                <p vid="171">共鳴は、すべての起点です。</p>
+                            </div>
+                        </div>
+
+                            <div class="h-px bg-line my-8" vid="172"></div>
+
+                            <!-- Subchapter: 協働パートナ -->
+                            <div class="mb-10" vid="173">
+                                <h4 class="font-serif text-xl mb-6" vid="174">③ 協働パートナ</h4>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="175">
+                                <p vid="176">酒販店、問屋、イベント、IRなど、分野にかかわらず<br vid="177">審美眼や世界観、自分軸、テーマ性、独自のコミュニティを既に持ち合わせており、<br vid="178">ワインの可能性を広げる役割を担う存在。</p>
+                                <p vid="179">構造の深度は目的に応じて異なりますが、<br vid="180">理念は共有しています。</p>
+                            </div>
+                        </div>
+
+                            <div class="h-px bg-line my-8" vid="181"></div>
+
+                            <!-- Subchapter: 公認パートナー -->
+                            <div vid="182">
+                                <h4 class="font-serif text-xl mb-6" vid="183">④ 公認パートナー</h4>
+                            <div class="space-y-6 text-base text-text" style="line-height: 1.8;" vid="184">
+                                <p vid="185">共鳴が深まり、<br vid="186">構造を共有する段階に入った拠点。</p>
+                                <p vid="187">FINDESTの理念と世界観を理解し、</p>
+                                <ul class="list-disc list-inside space-y-2 text-text-secondary" vid="188">
+                                    <li vid="189">四つの軸（品質・生命・自分・芸術）</li>
+                                    <li vid="190">ワイン作法（姿勢・観察・問い）の実践</li>
+                                    <li vid="191">生産者ストーリーの体系化</li>
+                                    <li vid="192">表現を支えるツール<br vid="193">　　（エレメントセレクションカード・ハイパフォーマンスQR等）</li>
+                                </ul>
+                                <p vid="194">等を通じて、<br vid="195">その場の「語る力・表現」を支えます。</p>
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="trust" class="section-padding px-6 md:px-12 border-t border-line" vid="196">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-start" vid="197">
+            
+            <div class="lg:col-span-4 lg:sticky lg:top-32" vid="198">
+                <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-3" vid="199">Quality Standards</span>
+                <h2 class="font-serif text-3xl mb-6 leading-tight" vid="200">世界基準で評価される、<br vid="201">ドイツ高品質ワイン</h2>
+                <p class="text-xs text-text-secondary mb-8 leading-relaxed" vid="202">VDP認証のトップ生産者を中心に厳選</p>
+                
+                <div class="mb-10" vid="203">
+                    <span class="block text-6xl font-serif mb-3 text-accent" vid="204">0.2%</span>
+                    <p class="text-sm text-text-secondary leading-relaxed border-l border-accent pl-5" style="line-height: 1.8;" vid="205">
+                        ドイツ全生産量のわずか数パーセントに過ぎないVDP（ドイツ・プレディカーツワイン生産者協会）加盟のトップ生産者を中心に、テロワールを正確に表現するワインのみを厳選。
+                    </p>
+                </div>
+
+                <p class="text-sm text-text font-medium mt-8" vid="206">
+                    業務用導入（飲食・ホテル・酒販）に対応。<br vid="207">提案資料やテックシート等を整備。
+                </p>
+            </div>
+
+            
+            <div class="lg:col-span-7 lg:col-start-6" vid="208">
+                <div class="flex flex-col items-center w-full max-w-md mx-auto" vid="209">
+                    
+                    <div class="w-full flex flex-col gap-1" vid="210">
+                        
+                        <div class="w-1/4 mx-auto border border-accent bg-surface p-5 text-center mb-1 relative vdp-tier cursor-default" vid="211">
+                            <span class="block text-[10px] tracking-widest text-accent mb-1" vid="212">GRAND CRU</span>
+                            <span class="font-serif text-lg block" vid="213">GROSSE LAGE</span>
+                            <span class="text-xs text-text-secondary" vid="214">特級畑</span>
+                        </div>
+                        
+                        
+                        <div class="w-2/4 mx-auto border border-line bg-surface/50 p-5 text-center mb-1 relative vdp-tier cursor-default" vid="215">
+                            <span class="block text-[10px] tracking-widest text-text-secondary mb-1" vid="216">PREMIER CRU</span>
+                            <span class="font-serif text-base block" vid="217">ERSTE LAGE</span>
+                            <span class="text-xs text-text-secondary" vid="218">一級畑</span>
+                        </div>
+
+                        
+                        <div class="w-3/4 mx-auto border border-line bg-surface/30 p-5 text-center mb-1 relative vdp-tier cursor-default" vid="219">
+                            <span class="block text-[10px] tracking-widest text-text-secondary mb-1" vid="220">VILLAGE</span>
+                            <span class="font-serif text-base block" vid="221">ORTSWEIN</span>
+                            <span class="text-xs text-text-secondary" vid="222">村名ワイン</span>
+                        </div>
+
+                        
+                        <div class="w-full border border-line bg-surface/10 p-5 text-center relative vdp-tier cursor-default" vid="223">
+                            <span class="block text-[10px] tracking-widest text-text-secondary mb-1" vid="224">ESTATE</span>
+                            <span class="font-serif text-base block" vid="225">GUTSWEIN</span>
+                            <span class="text-xs text-text-secondary" vid="226">生産者ワイン</span>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-text-secondary mt-6 tracking-[0.3em] uppercase" vid="227">VDP Classification System</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+    
+    <section id="service" class="section-padding px-6 md:px-12 border-t border-line" vid="228">
+        <div class="max-w-7xl mx-auto" vid="229">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20" vid="230">
+                <div vid="231">
+                    <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-3" vid="232">Our Service</span>
+                    <h2 class="font-serif text-3xl leading-tight" vid="233">Procurement Support</h2>
+                </div>
+                <p class="text-xs text-text-secondary mt-6 md:mt-0 max-w-md text-right leading-relaxed" vid="234">
+                    インポーターとしての機能に加え、現場でのオペレーションを考慮した<br vid="235">実用的なサポートを提供します。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-line" vid="236">
+                
+                <div class="service-card p-10 md:p-14 border-r border-b border-line bg-white" vid="237">
+                    <span class="font-mono text-[10px] tracking-wider text-text-secondary mb-10 block" vid="238">001</span>
+                    <h3 class="font-serif text-xl mb-1 leading-tight" vid="239">選定</h3>
+                    <p class="text-xs text-text-secondary mb-8 tracking-wide" vid="240">厳選セレクト</p>
+                    <p class="text-sm text-text-secondary leading-relaxed" style="line-height: 1.8;" vid="241">
+                        お店のコンセプト、客層、料理に合わせて最適なワインをご提案します。膨大なリストから選ぶ手間を省き、ストーリーのある銘柄を厳選。
+                    </p>
+                </div>
+
+                
+                <div class="service-card p-10 md:p-14 border-r border-b border-line bg-white" vid="242">
+                    <span class="font-mono text-[10px] tracking-wider text-text-secondary mb-10 block" vid="243">002</span>
+                    <h3 class="font-serif text-xl mb-1 leading-tight" vid="244">安定供給</h3>
+                    <p class="text-xs text-text-secondary mb-8 tracking-wide" vid="245">条件・在庫・配送</p>
+                    <p class="text-sm text-text-secondary leading-relaxed" style="line-height: 1.8;" vid="246">
+                        定温倉庫での厳重な管理と、欠品を防ぐ在庫コントロール。必要な時に必要な分だけ、確実にお届けする物流体制を整えています。
+                    </p>
+                </div>
+
+                
+                <div class="service-card p-10 md:p-14 border-r border-b border-line bg-white" vid="247">
+                    <span class="font-mono text-[10px] tracking-wider text-text-secondary mb-10 block" vid="248">003</span>
+                    <h3 class="font-serif text-xl mb-1 leading-tight" vid="249">導入支援</h3>
+                    <p class="text-xs text-text-secondary mb-8 tracking-wide" vid="250">提案・テック・説明サポート</p>
+                    <p class="text-sm text-text-secondary leading-relaxed" style="line-height: 1.8;" vid="251">
+                        詳細なテックシート、スタッフ様向けの勉強会、メニュー作成のサポートなど、現場でワインが「動く」ための仕組みを提供します。
+                    </p>
+                </div>
+            </div>
+
+            <!-- NEW: Service Contents Chapter -->
+            <div class="mt-32 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start" vid="252">
+                <div class="lg:col-span-3" vid="253">
+                    <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-2 writing-vertical lg:writing-horizontal" vid="254">SERVICE / 提案</span>
+                </div>
+                
+                <div class="lg:col-span-9 space-y-12" vid="255">
+                    <div class="space-y-8 fade-in-block" vid="256">
+                        <h3 class="font-serif text-2xl leading-relaxed" vid="257">厳選セレクト＋安定供給＋導入サポート（現場で伝わる説明つき）</h3>
+                        <p class="text-lg text-text-secondary" vid="258">まずは、状況をお聞かせください</p>
+                        <p class="text-base leading-relaxed" style="line-height: 1.8;" vid="259">厳選したワインを、店の 場 に合わせて提案し、<br vid="260">導入まで一貫して伴走します。</p>
+                    </div>
+
+                    <div class="h-px bg-line my-16" vid="261"></div>
+
+                    <div class="space-y-8" vid="262">
+                        <h4 class="font-serif text-xl mb-12" vid="263">提 供 内 容</h4>
+                        
+                        <div class="space-y-6 text-base leading-relaxed fade-in-block" style="line-height: 1.8;" vid="264">
+                            <p vid="265">FINDESTが扱うのは、世界的に評価の高いドイツの造り手による高品質ワインです。「流通の都合」ではなく、畑・収穫・醸造の哲学と品質基準で選び抜いています。</p>
+                            
+                            <p vid="266">この表現が可能なのは、代表のこれまでの経験が大きく関係しています。代表は、飲食店を数十店舗運営し、人材育成と現場運営に長年携わってきました。忙しい現場の中で、「どうすれば無理なく、伝わるのか」を研究し続けてきたのです。</p>
+                            
+                            <p vid="267">在庫から選んで当てはめることはしません。<br vid="268">私たちが最初に見るのは、ワインではなく、<br vid="269">あなたの店の「世界観」です。</p>
+                            
+                            <p vid="270">生産者が子どものように大切に育て、人生を託してきたワインです。</p>
+                            
+                            <p vid="271">私たちはその背景や想い、秘話を知っているからこそ、ワインの 熱量 ごと、次の表現者へつなぐ役割を担っています。</p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16" vid="272">
+                            <div class="p-8 border border-line bg-white fade-in-block" vid="273">
+                                <h5 class="font-serif text-lg mb-4" vid="274">想い</h5>
+                                <p class="text-sm text-text-secondary leading-relaxed" vid="275">何を大切にしているか、誰に届けたいか</p>
+                            </div>
+                            
+                            <div class="p-8 border border-line bg-white fade-in-block" vid="276">
+                                <h5 class="font-serif text-lg mb-4" vid="277">空間</h5>
+                                <p class="text-sm text-text-secondary leading-relaxed" vid="278">光・音・温度・距離感</p>
+                            </div>
+                            
+                            <div class="p-8 border border-line bg-white fade-in-block" vid="279">
+                                <h5 class="font-serif text-lg mb-4" vid="280">料理</h5>
+                                <p class="text-sm text-text-secondary leading-relaxed" vid="281">味の輪郭、余韻、ペアリングの狙い</p>
+                            </div>
+                            
+                            <div class="p-8 border border-line bg-white fade-in-block" vid="282">
+                                <h5 class="font-serif text-lg mb-4" vid="283">人</h5>
+                                <p class="text-sm text-text-secondary leading-relaxed" vid="284">提供者の言葉と所作（無理なく伝わる形）</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-16 space-y-6" vid="285">
+                            <p class="text-base leading-relaxed" style="line-height: 1.8;" vid="286">導入後の現場で実感された変化をご紹介します。</p>
+                            <p class="font-serif text-xl leading-relaxed" vid="287">この店のための 本を、一緒に設計しませんか。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: Result Chapter -->
+            <div class="mt-32" vid="288">
+                <div class="text-center mb-16" vid="289">
+                    <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-3" vid="290">Result</span>
+                    <h3 class="font-serif text-3xl" vid="291">期待できること</h3>
+                </div>
+
+                <div class="max-w-4xl mx-auto space-y-8" vid="292">
+                    <div class="p-8 border-l-2 border-accent fade-in-block" vid="293">
+                        <p class="font-serif text-xl leading-relaxed" vid="294">導入の意図がメニュー上で伝わる</p>
+                    </div>
+                    <div class="h-px bg-line" vid="295"></div>
+                    <div class="p-8 border-l-2 border-accent fade-in-block" vid="296">
+                        <p class="font-serif text-xl leading-relaxed" vid="297">スタッフが無理なく説明でき、現場で回る</p>
+                    </div>
+                    <div class="h-px bg-line" vid="298"></div>
+                    <div class="p-8 border-l-2 border-accent fade-in-block" vid="299">
+                        <p class="font-serif text-xl leading-relaxed" vid="300">ゲストに違いが伝わり、注文につながる</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW: Four Axes Chapter -->
+            <div class="mt-32" vid="301">
+                <div class="text-center mb-20" vid="302">
+                    <h3 class="font-serif text-4xl mb-8 tracking-wider" vid="303">私 た ち の 4 つ の 軸</h3>
+                    <p class="text-base leading-relaxed max-w-3xl mx-auto" style="line-height: 1.8;" vid="304">FINDESTは、ワイナリーの想いを背負い、ただワインを届けるだけでなく、<br vid="305">「何を、どう表現するのか」までを一緒に考え、支えていきたいと考えています。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-16" vid="306">
+                    <div class="p-10 border border-line bg-white fade-in-block" vid="307">
+                        <p class="text-sm leading-relaxed mb-6" style="line-height: 1.8;" vid="308">造り手が流行ではなく、自らの意思で造っているか</p>
+                        <span class="text-xs tracking-[0.3em] uppercase text-text-secondary" vid="309">自分軸</span>
+                    </div>
+                    
+                    <div class="p-10 border border-line bg-white fade-in-block" vid="310">
+                        <p class="text-sm leading-relaxed mb-6" style="line-height: 1.8;" vid="311">味わいが人の感性を動かす表現になっているか</p>
+                        <span class="text-xs tracking-[0.3em] uppercase text-text-secondary" vid="312">芸術性</span>
+                    </div>
+                    
+                    <div class="p-10 border border-line bg-white fade-in-block" vid="313">
+                        <p class="text-sm leading-relaxed mb-6" style="line-height: 1.8;" vid="314">再現性、完成度、世界基準の評価を備えているか</p>
+                        <span class="text-xs tracking-[0.3em] uppercase text-text-secondary" vid="315">高品質</span>
+                    </div>
+                    
+                    <div class="p-10 border border-line bg-white fade-in-block" vid="316">
+                        <p class="text-sm leading-relaxed mb-6" style="line-height: 1.8;" vid="317">自然と人が共に生きる循環の中で生まれているか</p>
+                        <span class="text-xs tracking-[0.3em] uppercase text-text-secondary" vid="318">生命軸</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="catalogue" class="section-padding px-6 md:px-12 bg-bg border-t border-line" vid="319">
+        <div class="max-w-7xl mx-auto" vid="320">
+            <div class="mb-20" vid="321">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6" vid="322">
+                    <div vid="323">
+                        <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-3" vid="324">Selection</span>
+                        <h2 class="font-serif text-3xl leading-tight mb-2" vid="325">取扱いラインナップ</h2>
+                        <p class="text-xs text-text-secondary" vid="326">辛口中心。業務用導入に合わせて、テック情報まで整備したラインナップ。</p>
+                    </div>
+                </div>
+
+                <!-- Catalogue tools -->
+                <div class="flex flex-col md:flex-row gap-4 mb-8" vid="327">
+                    <div class="relative flex-1" vid="328">
+                        <input type="text" id="catalogueSearch" placeholder="ワイナリー / 地域 / 品種で検索" class="w-full border border-line px-4 py-3 text-sm bg-white focus:outline-none focus:border-accent transition-colors" vid="329">
+                        <svg class="w-4 h-4 text-text-secondary absolute right-4 top-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="330"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" vid="331"></path></svg>
+                    </div>
+                    <div class="flex gap-2" vid="332">
+                        <select id="regionFilter" class="border border-line px-4 py-3 text-sm bg-white focus:outline-none focus:border-accent appearance-none" vid="333">
+                            <option vid="334">すべての地域</option>
+                            <option vid="335">Mosel</option>
+                            <option vid="336">Rheingau</option>
+                            <option vid="337">Pfalz</option>
+                            <option vid="338">Baden</option>
+                            <option vid="339">Franken</option>
+                            <option vid="340">Württemberg</option>
+                            <option vid="341">Ahr</option>
+                        </select>
+                        <select id="styleFilter" class="border border-line px-4 py-3 text-sm bg-white focus:outline-none focus:border-accent appearance-none" vid="342">
+                            <option vid="343">すべてのスタイル</option>
+                            <option vid="344">赤ワイン</option>
+                            <option vid="345">白ワイン</option>
+                            <option vid="346">自然派</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Premium list-cards -->
+            <div id="wineryListCards" class="grid grid-cols-1 gap-4" vid="347"></div>
+        </div>
+    </section>
+
+    
+    <section class="section-padding px-6 md:px-12 border-t border-line bg-surface/10" vid="348">
+        <div class="max-w-5xl mx-auto" vid="349">
+            <div class="text-center mb-20" vid="350">
+                <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-3" vid="351">Voice</span>
+                <h2 class="font-serif text-3xl" vid="352">現場の声</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16" vid="353">
+                
+                <div class="pl-8 border-l border-line" vid="354">
+                    <p class="font-serif text-lg mb-8 leading-relaxed italic text-text" style="line-height: 1.9;" vid="355">
+                        「FINDESTさんのワインは、スタッフがお客様に説明しやすいストーリーがあります。導入後の勉強会も丁寧で、チーム全体のワインリテラシーが上がりました。」
+                    </p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-line/30" vid="356">
+                        <span class="text-[10px] tracking-[0.25em] text-text-secondary uppercase" vid="357">Tokyo French Restaurant Sommelier</span>
+                    </div>
+                </div>
+
+                
+                <div class="pl-8 border-l border-line" vid="358">
+                    <p class="font-serif text-lg mb-8 leading-relaxed italic text-text" style="line-height: 1.9;" vid="359">
+                        「安定供給が何より助かっています。提案いただくワインはどれも料理との相性が良く、お客様からの『美味しい』という言葉が増えました。」
+                    </p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-line/30" vid="360">
+                        <span class="text-[10px] tracking-[0.25em] text-text-secondary uppercase" vid="361">Hotel F&amp;B Manager</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="section-padding px-6 md:px-12 bg-surface/30 border-t border-line" vid="362">
+        <div class="max-w-2xl mx-auto" vid="363">
+            <div class="text-center mb-16" vid="364">
+                <span class="block text-[10px] tracking-[0.3em] uppercase text-text-secondary mb-3" vid="365">Contact</span>
+                <h2 class="font-serif text-3xl" vid="366">お問い合わせ</h2>
+            </div>
+
+            
+            <div class="flex border-b border-line mb-12" vid="367">
+                <button class="flex-1 py-4 text-center border-b-2 border-text font-medium text-sm tracking-widest" vid="368">
+                    導入相談
+                </button>
+                <button class="flex-1 py-4 text-center border-b-2 border-transparent text-text-secondary font-medium text-sm tracking-widest hover:text-text" vid="369">
+                    資料請求 (PDF)
+                </button>
+            </div>
+
+            
+            <form class="space-y-8" vid="370">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" vid="371">
+                    <div class="space-y-2" vid="372">
+                        <label class="text-xs tracking-widest text-text-secondary" vid="373">店名 / 会社名</label>
+                        <input type="text" class="w-full border-b border-line py-2 bg-transparent focus:outline-none focus:border-accent transition-colors" vid="374">
+                    </div>
+                    <div class="space-y-2" vid="375">
+                        <label class="text-xs tracking-widest text-text-secondary" vid="376">担当者名</label>
+                        <input type="text" class="w-full border-b border-line py-2 bg-transparent focus:outline-none focus:border-accent transition-colors" vid="377">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" vid="378">
+                    <div class="space-y-2" vid="379">
+                        <label class="text-xs tracking-widest text-text-secondary" vid="380">Email</label>
+                        <input type="email" class="w-full border-b border-line py-2 bg-transparent focus:outline-none focus:border-accent transition-colors" vid="381">
+                    </div>
+                    <div class="space-y-2" vid="382">
+                        <label class="text-xs tracking-widest text-text-secondary" vid="383">業態</label>
+                        <div class="relative" vid="384">
+                            <select class="w-full border-b border-line py-2 bg-transparent focus:outline-none focus:border-accent appearance-none rounded-none" vid="385">
+                                <option vid="386">飲食</option>
+                                <option vid="387">ホテル</option>
+                                <option vid="388">酒販</option>
+                                <option vid="389">その他</option>
+                            </select>
+                            <div class="absolute right-0 top-3 pointer-events-none" vid="390">
+                                <svg class="w-4 h-4 text-text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="391"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" vid="392"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2" vid="393">
+                    <label class="text-xs tracking-widest text-text-secondary" vid="394">お問い合わせ内容</label>
+                    <textarea rows="4" class="w-full border-b border-line py-2 bg-transparent focus:outline-none focus:border-accent transition-colors resize-none" vid="395"></textarea>
+                </div>
+
+                <div class="pt-12 text-center" vid="396">
+                    <button type="submit" class="premium-btn bg-text text-bg px-16 py-5 text-xs tracking-[0.25em] uppercase" vid="397">
+                        送信する
+                        <span class="arrow-motion ml-2" vid="398">→</span>
+                    </button>
+                    <p class="mt-6 text-[10px] text-text-secondary tracking-wider" vid="399">※ 原則1営業日以内に返信いたします</p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    
+    <footer class="bg-footer text-surface py-16 px-6 md:px-12 border-t border-line/10" vid="400">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12" vid="401">
+            <div vid="402">
+                <h2 class="font-serif text-2xl tracking-widest mb-4" vid="403">FINDEST</h2>
+                <p class="text-xs text-text-secondary leading-relaxed" vid="404">
+                    German Wine Specialists<br vid="405">
+                    Based in Tokyo, Japan.
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8 md:gap-16 text-xs text-gray-400" vid="406">
+                <a href="#" class="hover:text-white transition-colors" vid="407">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors" vid="408">Terms of Service</a>
+                <a href="#" class="hover:text-white transition-colors" vid="409">Instagram</a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-[10px] text-gray-600 flex justify-between" vid="410">
+            <span vid="411">© 2024 FINDEST Inc.</span>
+        </div>
+    </footer>
+
+    
+    <div id="wineModal" class="fixed inset-0 z-[100] hidden" vid="412">
+        
+        <div class="absolute inset-0 bg-black/40 glass-blur transition-opacity duration-300" onclick="closeModal()" vid="413"></div>
+        
+        
+        <div class="absolute inset-4 md:inset-12 bg-bg flex flex-col md:flex-row shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300" vid="414">
+            
+            
+            <div class="w-full md:w-64 bg-surface/50 border-r border-line p-6 flex-shrink-0 flex flex-col gap-8 overflow-y-auto" vid="415">
+                <div vid="416">
+                    <h3 class="font-serif text-lg mb-4" vid="417">商品一覧</h3>
+                    <div class="relative" vid="418">
+                        <input type="text" placeholder="ワイン名・品種で検索" class="w-full bg-white border border-line px-3 py-2 text-sm focus:outline-none focus:border-accent" vid="419">
+                        <svg class="w-4 h-4 text-text-secondary absolute right-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="420"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" vid="421"></path></svg>
+                    </div>
+                </div>
+
+                <div vid="422">
+                    <h4 class="text-xs tracking-widest text-text-secondary uppercase mb-3" vid="423">Type</h4>
+                    <div class="space-y-2" vid="424">
+                        <label class="flex items-center gap-2 cursor-pointer group" vid="425">
+                            <div class="w-4 h-4 border border-line rounded-full flex items-center justify-center group-hover:border-accent" vid="426">
+                                <div class="w-2 h-2 bg-text rounded-full" vid="427"></div>
+                            </div>
+                            <span class="text-sm" vid="428">すべて</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group" vid="429">
+                            <div class="w-4 h-4 border border-line rounded-full flex items-center justify-center group-hover:border-accent" vid="430"></div>
+                            <span class="text-sm text-text-secondary" vid="431">スパークリング</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group" vid="432">
+                            <div class="w-4 h-4 border border-line rounded-full flex items-center justify-center group-hover:border-accent" vid="433"></div>
+                            <span class="text-sm text-text-secondary" vid="434">白ワイン</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer group" vid="435">
+                            <div class="w-4 h-4 border border-line rounded-full flex items-center justify-center group-hover:border-accent" vid="436"></div>
+                            <span class="text-sm text-text-secondary" vid="437">赤ワイン</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div vid="438">
+                    <h4 class="text-xs tracking-widest text-text-secondary uppercase mb-3" vid="439">Region</h4>
+                    <div class="space-y-2 text-sm text-text-secondary" vid="440">
+                        <div class="cursor-pointer hover:text-text" vid="441">Mosel</div>
+                        <div class="cursor-pointer hover:text-text" vid="442">Rheingau</div>
+                        <div class="cursor-pointer hover:text-text" vid="443">Pfalz</div>
+                        <div class="cursor-pointer hover:text-text" vid="444">Baden</div>
+                        <div class="cursor-pointer hover:text-text" vid="445">Franken</div>
+                    </div>
+                </div>
+
+                <div class="mt-auto" vid="446">
+                    <button onclick="closeModal()" class="w-full py-2 border border-line text-xs uppercase tracking-widest hover:bg-line/10" vid="447">
+                        閉じる / 一覧に戻る
+                    </button>
+                </div>
+            </div>
+
+            
+            <div class="flex-1 bg-white p-0 md:p-6 overflow-y-auto" vid="448">
+                <div class="flex justify-between items-center mb-4 px-4 pt-4 md:px-0 md:pt-0" vid="449">
+                    <span class="text-xs text-text-secondary" vid="450">12 ITEMS FOUND</span>
+                    <div class="hidden text-xs text-accent animate-pulse" vid="451">読み込み中...</div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 px-4 md:px-0 pb-20 md:pb-0" vid="452">
+                    
+                    <div class="border border-accent bg-bg p-4 cursor-pointer relative group" vid="453">
+                        <div class="flex gap-4" vid="454">
+                            <div class="w-16 h-48 bg-gray-200 flex-shrink-0" vid="455"></div> 
+                            <div class="flex-1" vid="456">
+                                <div class="flex justify-between items-start mb-2" vid="457">
+                                    <span class="text-xs font-mono text-text-secondary" vid="458">2021</span>
+                                    <span class="text-[10px] border border-accent text-accent px-1" vid="459">GG</span>
+                                </div>
+                                <h3 class="font-serif text-lg leading-tight mb-1" vid="460">Riesling Trocken GG</h3>
+                                <p class="text-xs text-text-secondary mb-3" vid="461">Weingut Example • Mosel</p>
+                                <div class="text-xs text-text-secondary line-clamp-2" vid="462">
+                                    非常にピュアで、スレート土壌由来のミネラルが際立つ一本。長期熟成のポテンシャルを持つ。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="border border-line hover:border-text/50 bg-white p-4 cursor-pointer transition-colors" vid="463">
+                        <div class="flex gap-4" vid="464">
+                            <div class="w-16 h-48 bg-gray-100 flex-shrink-0" vid="465"></div> 
+                            <div class="flex-1" vid="466">
+                                <div class="flex justify-between items-start mb-2" vid="467">
+                                    <span class="text-xs font-mono text-text-secondary" vid="468">2020</span>
+                                    <span class="text-[10px] border border-line text-text-secondary px-1" vid="469">1G</span>
+                                </div>
+                                <h3 class="font-serif text-lg leading-tight mb-1" vid="470">Pinot Noir Reserve</h3>
+                                <p class="text-xs text-text-secondary mb-3" vid="471">Weingut Dautel • Württemberg</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="border border-line hover:border-text/50 bg-white p-4 cursor-pointer transition-colors" vid="472">
+                        <div class="flex gap-4" vid="473">
+                            <div class="w-16 h-48 bg-gray-100 flex-shrink-0" vid="474"></div> 
+                            <div class="flex-1" vid="475">
+                                <div class="flex justify-between items-start mb-2" vid="476">
+                                    <span class="text-xs font-mono text-text-secondary" vid="477">2022</span>
+                                    <span class="text-[10px] border border-line text-text-secondary px-1" vid="478">Ortswein</span>
+                                </div>
+                                <h3 class="font-serif text-lg leading-tight mb-1" vid="479">Silvaner Muschelkalk</h3>
+                                <p class="text-xs text-text-secondary mb-3" vid="480">Weingut Horst Sauer • Franken</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                     <div class="border border-line hover:border-text/50 bg-white p-4 cursor-pointer transition-colors" vid="481">
+                        <div class="flex gap-4" vid="482">
+                            <div class="w-16 h-48 bg-gray-100 flex-shrink-0" vid="483"></div> 
+                            <div class="flex-1" vid="484">
+                                <div class="flex justify-between items-start mb-2" vid="485">
+                                    <span class="text-xs font-mono text-text-secondary" vid="486">2021</span>
+                                    <span class="text-[10px] border border-line text-text-secondary px-1" vid="487">Gutswein</span>
+                                </div>
+                                <h3 class="font-serif text-lg leading-tight mb-1" vid="488">Riesling Tradition</h3>
+                                <p class="text-xs text-text-secondary mb-3" vid="489">Weingut Ress • Rheingau</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="hidden flex flex-col items-center justify-center h-64 text-text-secondary" vid="490">
+                    <p class="mb-2" vid="491">該当するワインが見つかりませんでした。</p>
+                    <button class="text-xs underline hover:text-text" vid="492">条件をクリアする</button>
+                </div>
+            </div>
+
+            
+            <div class="w-full md:w-80 bg-bg border-l border-line p-6 overflow-y-auto hidden md:block" vid="493">
+                <div class="flex flex-col items-center text-center mb-8" vid="494">
+                    <div class="w-24 h-64 bg-gray-200 mb-6 relative" vid="495">
+                        
+                        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-16 h-20 bg-white border border-gray-300" vid="496"></div>
+                    </div>
+                    <span class="text-xs tracking-widest text-accent mb-2" vid="497">GROSSE LAGE</span>
+                    <h2 class="font-serif text-2xl mb-1" vid="498">Riesling Trocken GG</h2>
+                    <p class="text-sm text-text-secondary" vid="499">Weingut Example</p>
+                </div>
+
+                <div class="space-y-6" vid="500">
+                    
+                    <div class="space-y-2 pb-6 border-b border-line/50" vid="501">
+                        <div class="flex justify-between items-center text-xs" vid="502">
+                            <span class="text-text-secondary" vid="503">辛口度</span>
+                            <div class="flex gap-1" vid="504">
+                                <div class="w-2 h-2 rounded-full bg-text" vid="505"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="506"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="507"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="508"></div>
+                                <div class="w-2 h-2 rounded-full bg-line" vid="509"></div>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center text-xs" vid="510">
+                            <span class="text-text-secondary" vid="511">酸（キレ）</span>
+                            <div class="flex gap-1" vid="512">
+                                <div class="w-2 h-2 rounded-full bg-text" vid="513"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="514"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="515"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="516"></div>
+                                <div class="w-2 h-2 rounded-full bg-text" vid="517"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="grid grid-cols-2 gap-4 text-xs" vid="518">
+                        <div vid="519">
+                            <span class="block text-text-secondary text-[10px]" vid="520">VINTAGE</span>
+                            <span vid="521">2021</span>
+                        </div>
+                        <div vid="522">
+                            <span class="block text-text-secondary text-[10px]" vid="523">ALC</span>
+                            <span vid="524">12.5%</span>
+                        </div>
+                        <div vid="525">
+                            <span class="block text-text-secondary text-[10px]" vid="526">REGION</span>
+                            <span vid="527">Mosel</span>
+                        </div>
+                        <div vid="528">
+                            <span class="block text-text-secondary text-[10px]" vid="529">VARIETY</span>
+                            <span vid="530">Riesling</span>
+                        </div>
+                    </div>
+
+                    
+                    <div vid="531">
+                        <h4 class="text-xs font-bold mb-2" vid="532">Tasting Notes</h4>
+                        <p class="text-xs leading-relaxed text-text-secondary" vid="533">
+                            レモン、白桃、そして砕いた石のようなミネラルの香り。口に含むと非常にドライで、引き締まった酸が余韻まで長く続く。今飲んでも素晴らしいが、10年以上の熟成も期待できる。
+                        </p>
+                    </div>
+
+                    
+                    <div class="pt-4 space-y-3" vid="534">
+                        <button class="w-full py-3 bg-text text-bg text-xs tracking-widest hover:bg-accent transition-colors" vid="535">
+                            見積もりに追加
+                        </button>
+                        <button class="w-full py-3 border border-text text-text text-xs tracking-widest hover:bg-surface transition-colors" vid="536">
+                            テックシート (PDF)
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 p-2 bg-white rounded-full shadow-lg md:hidden" vid="537">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" vid="538"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" vid="539"></path></svg>
+            </button>
+        </div>
+    </div>
+
+    <script vid="540">
+        function openModal() {
+            const modal = document.getElementById('wineModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('wineModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+
+        // Chapter Navigation: ScrollSpy with IntersectionObserver
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.chapter-nav-item');
+            const sections = document.querySelectorAll('.chapter-target');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-120px 0px -60% 0px',
+                threshold: 0
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navItems.forEach(item => item.classList.remove('active'));
+                        const activeNav = document.querySelector(`a[href="#${entry.target.id}"]`);
+                        if (activeNav) {
+                            activeNav.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+
+            // Reveal on scroll for chapter blocks
+            const chapterBlocks = document.querySelectorAll('.chapter-block');
+            const revealOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, revealOptions);
+
+            chapterBlocks.forEach(block => revealObserver.observe(block));
+
+            // Reveal on scroll for new fade-in blocks
+            const fadeInBlocks = document.querySelectorAll('.fade-in-block');
+            fadeInBlocks.forEach((block, index) => {
+                setTimeout(() => {
+                    revealObserver.observe(block);
+                }, index * 100);
+            });
+        });
+    </script>
+
+</body></html>
